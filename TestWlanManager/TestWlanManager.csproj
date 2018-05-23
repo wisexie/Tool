@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B562D78-2356-472E-A659-A3EFC5CDE111}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestWlanManager</RootNamespace>
+    <AssemblyName>TestWlanManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>treelogo64.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="PacketDotNet">
+      <HintPath>Lib\PacketDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="SharpPcap">
+      <HintPath>Lib\SharpPcap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Core\BaseViewModel.cs" />
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="EngineContext.cs" />
+    <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="GFramework.BlankWindow\BehaviorHelper.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\BorderlessWindowBehavior.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\GlowWindowBehavior.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\StylizedBehaviorCollection.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\StylizedBehaviors.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\WindowClosedBehavior.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\WindowMaximizedBehavior.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\WindowMinimizedBehavior.cs" />
+    <Compile Include="GFramework.BlankWindow\Behaviours\WindowsSettingBehaviour.cs" />
+    <Compile Include="GFramework.BlankWindow\BlankWindow.cs" />
+    <Compile Include="GFramework.BlankWindow\BlankWindowHelpers.cs" />
+    <Compile Include="GFramework.BlankWindow\Glow.cs" />
+    <Compile Include="GFramework.BlankWindow\GlowDirection.cs" />
+    <Compile Include="GFramework.BlankWindow\GlowWindow.xaml.cs">
+      <DependentUpon>GlowWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\ComGuids.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\Debug.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\DoubleUtil.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\DpiHelper.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\ErrorCodes.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\MessageWindow.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\NativeMethods.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\ShellProvider.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\StreamHelper.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\Utilities.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\Utilities.Windows.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\Utilities.Wpf.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\Standard\Verify.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\SystemCommands.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\SystemParameters2.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\WindowChrome.cs" />
+    <Compile Include="GFramework.BlankWindow\Microsoft.Windows.Shell\WindowChromeWorker.cs" />
+    <Compile Include="GFramework.BlankWindow\Models\Win32\GWL.cs" />
+    <Compile Include="GFramework.BlankWindow\Models\Win32\HitTestValues.cs" />
+    <Compile Include="GFramework.BlankWindow\Models\Win32\NativeMethods.cs" />
+    <Compile Include="GFramework.BlankWindow\Models\Win32\SWP.cs" />
+    <Compile Include="GFramework.BlankWindow\Models\Win32\WM.cs" />
+    <Compile Include="GFramework.BlankWindow\Models\Win32\WS.cs" />
+    <Compile Include="GFramework.BlankWindow\Models\Win32\WSEX.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\ABEdge.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\ABMsg.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\APPBARDATA.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\Constants.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\CREATESTRUCT.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\MARGINS.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\MINMAXINFO.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\MONITORINFO.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\POINT.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\RECT.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\SafeLibraryHandle.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\UnsafeNativeMethods.cs" />
+    <Compile Include="GFramework.BlankWindow\Native\WINDOWPLACEMENT.cs" />
+    <Compile Include="GFramework.BlankWindow\NotifyIcon\INotifyIcon.cs" />
+    <Compile Include="GFramework.BlankWindow\PropertyChangeNotifier.cs" />
+    <Compile Include="GFramework.BlankWindow\WindowSettings.cs" />
+    <Compile Include="Helper\ArpHelper.cs" />
+    <Compile Include="Helper\DnsHelper.cs" />
+    <Compile Include="Helper\KeyboardHook.cs" />
+    <Compile Include="NotifyIconWpf\BalloonIcon.cs" />
+    <Compile Include="NotifyIconWpf\Interop\BalloonFlags.cs" />
+    <Compile Include="NotifyIconWpf\Interop\IconDataMembers.cs" />
+    <Compile Include="NotifyIconWpf\Interop\IconState.cs" />
+    <Compile Include="NotifyIconWpf\Interop\MouseEvent.cs" />
+    <Compile Include="NotifyIconWpf\Interop\NotifyCommand.cs" />
+    <Compile Include="NotifyIconWpf\Interop\NotifyIconData.cs" />
+    <Compile Include="NotifyIconWpf\Interop\NotifyIconVersion.cs" />
+    <Compile Include="NotifyIconWpf\Interop\Point.cs" />
+    <Compile Include="NotifyIconWpf\Interop\SystemInfo.cs" />
+    <Compile Include="NotifyIconWpf\Interop\TrayInfo.cs" />
+    <Compile Include="NotifyIconWpf\Interop\WinApi.cs" />
+    <Compile Include="NotifyIconWpf\Interop\WindowClass.cs" />
+    <Compile Include="NotifyIconWpf\Interop\WindowMessageSink.cs" />
+    <Compile Include="NotifyIconWpf\PopupActivationMode.cs" />
+    <Compile Include="NotifyIconWpf\RoutedEventHelper.cs" />
+    <Compile Include="NotifyIconWpf\TaskbarIcon.cs" />
+    <Compile Include="NotifyIconWpf\TaskbarIcon.Declarations.cs" />
+    <Compile Include="NotifyIconWpf\Util.cs" />
+    <Compile Include="PopWindows\PacpViewModel.cs" />
+    <Compile Include="PopWindows\PacpWindow.xaml.cs">
+      <DependentUpon>PacpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\WifiModel\WlanDetail.cs" />
+    <Compile Include="ViewModel\WifiModel\WlanSetting.cs" />
+    <Compile Include="WlanApi\HostedNetworkPeer.cs" />
+    <Compile Include="WlanApi\HostedNetworkSettings.cs" />
+    <Compile Include="WlanApi\HostedNetworkStatus.cs" />
+    <Compile Include="WlanApi\IcsConnection.cs" />
+    <Compile Include="WlanApi\IcsConnectionStatus.cs" />
+    <Compile Include="WlanApi\IcsManager.cs" />
+    <Compile Include="WlanApi\IpAddressArray.cs" />
+    <Compile Include="WlanApi\SoftAP.cs" />
+    <Compile Include="WlanApi\WlanShare.cs" />
+    <Compile Include="WlanPcap\DevicePacket.cs" />
+    <Compile Include="WlanPcap\DevicePacp.cs" />
+    <Compile Include="WlanPcap\PacketExtension.cs" />
+    <Page Include="GFramework.BlankWindow\GlowWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GFramework.BlankWindow\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PopWindows\PacpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="NETCONLib">
+      <Guid>{43E734CA-043D-4A70-9A2C-A8F254063D91}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="treelogo64.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

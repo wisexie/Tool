@@ -1,0 +1,36 @@
+﻿<Window x:Class="DzTree.VideoRecoder.Views.Screens.FullScreenView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal="http://www.caliburnproject.org"
+        mc:Ignorable="d" WindowStyle="None" WindowState="Maximized"  Background="Transparent"
+        Title="FullScreen"
+        AllowsTransparency="True"
+        cal:Message.Attach="[Event MouseMove]=[MouseMove($source,$eventArgs)];
+                            [Event MouseDown]=[MouseDown($source,$eventArgs)];
+                            [Event MouseRightButtonUp]=[MouseRightButtonUp($source,$eventArgs)];
+                            [Event MouseUp]=[MouseUp($source,$eventArgs)]">
+
+    <Grid>
+  
+        <Canvas  Panel.ZIndex="2">
+                <Rectangle Stroke="Blue" Fill="#00FFFFFF"  StrokeThickness="2"
+                Canvas.Left="{Binding RectLeftoffset}" Name="ClipRect"
+                Canvas.Top="{Binding RectTopoffset}"
+                Width="{Binding RectWidth}"
+                Height="{Binding RectHeight}">
+                </Rectangle>
+            </Canvas>
+            <Grid Background="#BBFFFFFF">
+                <Grid.Clip>
+                    <GeometryGroup>
+                        <RectangleGeometry Rect="-2048 -2048 4096 4096" />
+                        <RectangleGeometry  Rect="{Binding RectSelectArea}" >
+                        </RectangleGeometry>
+                    </GeometryGroup>
+                </Grid.Clip>
+            </Grid>
+        </Grid>
+    
+</Window>

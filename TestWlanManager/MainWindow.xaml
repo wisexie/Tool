@@ -1,0 +1,79 @@
+﻿<Window x:Class="TestWlanManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestWlanManager"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:tb="clr-namespace:Hardcodet.Wpf.TaskbarNotification"
+        mc:Ignorable="d"
+        Title="Wi-Fi热点助手" Style="{StaticResource DefaultWindowStyle}" WindowStartupLocation="CenterScreen"
+        Height="560" Width="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding UnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+        <ContextMenu x:Shared="false" x:Key="SysTrayMenu">
+            <MenuItem Header="退出" Click="MenuItem_Click" />
+        </ContextMenu>
+        <ContextMenu x:Key="WlanMenu">
+            <MenuItem Header="详细报文" Name="PacpDetail"  Command="{Binding PopDetailCommand}"/>
+        </ContextMenu>
+        
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="{StaticResource MainInfoBg}" >
+            <Grid.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding StartCommand}"></KeyBinding>
+            </Grid.InputBindings>
+            <StackPanel HorizontalAlignment="Center" Margin="0,0,20,0">
+                <StackPanel Orientation="Horizontal"  Margin="0,20,0,10">
+                    <TextBlock Style="{StaticResource DefaultTextBlock}" Text="Wifi 名称：" Margin="0,3,10,0"></TextBlock>
+                    <TextBox Width="440" Name="WifiName" MaxLength="32" Text="{Binding Setting.Name,Mode=TwoWay,NotifyOnTargetUpdated=True}"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="0,0,0,20">
+                    <TextBlock  Style="{StaticResource DefaultTextBlock}" Text="Wifi 密码：" Margin="0,3,10,0"></TextBlock>
+                    <TextBox Width="440"  Name="WifiPassword" MaxLength="63" Text="{Binding Setting.Password,Mode=TwoWay,NotifyOnTargetUpdated=True}"></TextBox>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <Button Width="440" HorizontalAlignment="Center" Name="Start" Command="{Binding StartCommand}"  Margin="0,0,0,20" Content="{Binding StartAndStopContent}"></Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid Grid.Row="1" Name="StatusList" ContextMenu="{StaticResource WlanMenu}" ItemsSource="{Binding StatusInfo}" SelectedItem="{Binding StatusInfoSelectItem}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="设备名称" Foreground="{StaticResource DataGridRowFore}" Binding="{Binding HostName}" Width="*">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Ip地址" Binding="{Binding IpAddress}"  Width="*">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Mac地址" Binding="{Binding MAC}"  Width="*">
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+            <Grid  Grid.Row="2" Background="{StaticResource MainInfoBg}"  HorizontalAlignment="Stretch">
+                <TextBlock Style="{StaticResource DefaultTextBlock}" Text="1.0.0.0" Margin="20,10,0,10"></TextBlock>
+                <TextBlock Style="{StaticResource DefaultTextBlock}" TextAlignment="Center" HorizontalAlignment="Center" Text="版权所有©小树（www.DzTree.com）" Margin="0,10,20,10"></TextBlock>
+                <TextBlock Style="{StaticResource DefaultTextBlock}" HorizontalAlignment="Right" Text="联系方式:Support@DzTree.com" Margin="0,10,20,10"></TextBlock>
+            </Grid>
+            
+    
+        <tb:TaskbarIcon x:Name="MyNotifyIcon" 
+                        TrayMouseDoubleClick="MyNotifyIcon_TrayMouseDoubleClick"
+                        IconSource="/TestWlanManager;component/treelogo64.ico" ContextMenu="{DynamicResource SysTrayMenu}">
+        </tb:TaskbarIcon>
+    </Grid>
+</Window>
